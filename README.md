@@ -2,6 +2,8 @@
 
 Utilities for implementers and consumers of the javax.inject APIs.
 
+[Javadoc](https://javadoc.io/doc/com.google.common.inject/inject-common)
+
 usage:
 
 ```xml

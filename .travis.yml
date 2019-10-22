@@ -33,7 +33,7 @@ script:
 env:
   global:
     - JDK_FOR_PUBLISHING: *jdk_for_publishing
-    - BAZEL_VERSION="0.27.1"
+    - BAZEL_VERSION="1.0.0"
 
 branches:
   only:

@@ -1,7 +1,7 @@
-package(default_visibility = ["//:src"])
-
 load("@google_bazel_common//tools/javadoc:javadoc.bzl", "javadoc_library")
 load("//tools:maven.bzl", "POM_VERSION", "pom_file")
+
+package(default_visibility = ["//:src"])
 
 java_library(
     name = "inject",

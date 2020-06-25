@@ -4,7 +4,10 @@
 package_group(
     name = "src",
     packages = [
-        "//...",
+        "//",
+        "//java/...",
+        "//javatests/...",
+        "//tools/...",
     ],
 )
 

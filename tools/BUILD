@@ -1,8 +1,17 @@
 # Description:
 #   Tools for Inject Common
 
+load("//tools/build_defs/testing:bzl_library.bzl", "bzl_library")
+
 package(default_visibility = ["//:src"])
 
 exports_files([
     "pom-template.xml",
 ])
+
+bzl_library(
+    name = "maven_bzl",
+    srcs = ["maven.bzl"],
+    parse_tests = False,
+    visibility = ["//visibility:private"],
+)

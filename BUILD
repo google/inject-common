@@ -1,6 +1,8 @@
 # Description:
 #   Common tools for javax.inject implementations and consumers.
 
+package(default_visibility = [":src"])
+
 package_group(
     name = "src",
     packages = [
@@ -10,8 +12,6 @@ package_group(
         "//tools/...",
     ],
 )
-
-package(default_visibility = [":src"])
 
 exports_files(["LICENSE"])
 

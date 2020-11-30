@@ -51,6 +51,7 @@ public final class Providers {
       this.instance = instance;
     }
 
+    @Override
     @Nullable
     public T get() {
       return instance;

@@ -1,7 +1,7 @@
 # Description:
 #   Tools for Inject Common
 
-load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("//third_party/bazel_skylib:bzl_library.bzl", "bzl_library")
 
 package(default_visibility = ["//:src"])
 

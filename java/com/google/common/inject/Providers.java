@@ -16,7 +16,7 @@
 
 package com.google.common.inject;
 
-import javax.annotation.CheckReturnValue;
+import com.google.errorprone.annotations.CheckReturnValue;
 import javax.annotation.Nullable;
 import javax.inject.Provider;
 

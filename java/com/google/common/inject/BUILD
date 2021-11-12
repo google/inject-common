@@ -8,6 +8,7 @@ java_library(
     srcs = glob(["*.java"]),
     tags = ["maven_coordinates=com.google.common.inject:inject-common:" + POM_VERSION],
     deps = [
+        "@google_bazel_common//third_party/java/error_prone:annotations",
         "@google_bazel_common//third_party/java/jsr305_annotations",
         "@google_bazel_common//third_party/java/jsr330_inject",
     ],

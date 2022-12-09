@@ -1,7 +1,9 @@
 # Description:
 #   Common tools for javax.inject implementations and consumers.
 
-package(default_visibility = [":src"])
+package(
+    default_visibility = [":src"],
+)
 
 package_group(
     name = "src",

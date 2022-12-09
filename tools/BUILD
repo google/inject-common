@@ -3,7 +3,9 @@
 
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 
-package(default_visibility = ["//:src"])
+package(
+    default_visibility = ["//:src"],
+)
 
 exports_files([
     "pom-template.xml",

@@ -1,6 +1,8 @@
 load("@google_bazel_common//testing:test_defs.bzl", "gen_java_tests")
 
-package(default_visibility = ["//:src"])
+package(
+    default_visibility = ["//:src"],
+)
 
 gen_java_tests(
     name = "tests",

@@ -35,9 +35,7 @@ public final class Providers {
    * be necessary to use in your application, but is helpful for several types
    * of unit tests.
    *
-   * @param instance the instance that should always be provided.  This is also
-   *     permitted to be null, to enable aggressive testing, although in real
-   *     life a Provider will never return null.
+   * @param instance the instance that should always be provided
    */
   public static <T> Provider<T> of(@Nullable T instance) {
     return new ConstantProvider<T>(instance);

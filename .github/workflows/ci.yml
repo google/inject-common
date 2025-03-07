@@ -15,29 +15,26 @@ jobs:
       matrix:
         java: [8, 11, 15]
     runs-on: ubuntu-latest
-    env:
-      # Used by bazelisk: https://github.com/bazelbuild/bazelisk
-      USE_BAZEL_VERSION: '3.7.1'
     steps:
       # Cancel any previous runs for the same branch that are still running.
       - name: 'Cancel previous runs'
-        uses: styfle/cancel-workflow-action@0.8.0
+        uses: styfle/cancel-workflow-action@85880fa0301c86cca9da44039ee3bb12d3bedbfa
         with:
           access_token: ${{ github.token }}
       - name: 'Check out repository'
-        uses: actions/checkout@v2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - name: 'Cache Bazel dependencies'
-        uses: actions/cache@v2.1.4
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf
         with:
           path: ~/.cache/bazel/*/*/external
-          key: bazel-${{ hashFiles('WORKSPACE') }}
+          key: bazel-${{ hashFiles('MODULE.bazel') }}
           restore-keys: |
             bazel-
       - name: 'Set up JDK ${{ matrix.java }}'
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@3a4f6e1af504cf6a31855fa899c6aa5355ba6c12
         with:
           java-version: ${{ matrix.java }}
           distribution: 'zulu'
       - name: 'Test'
         shell: bash
-        run: bazel test --test_output=errors //...
+        run: bazelisk test --lockfile_mode=error --test_output=errors //...

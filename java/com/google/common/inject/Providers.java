@@ -17,8 +17,9 @@
 package com.google.common.inject;
 
 import com.google.errorprone.annotations.CheckReturnValue;
-import javax.annotation.Nullable;
 import javax.inject.Provider;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Static utility methods for creating and working with instances of {@link Provider}.
@@ -26,31 +27,29 @@ import javax.inject.Provider;
  * @author Kurt Alfred Kluever
  */
 @CheckReturnValue
+@NullMarked
 public final class Providers {
 
   private Providers() {}
 
   /**
-   * Returns a provider which always provides {@code instance}.  This should not
-   * be necessary to use in your application, but is helpful for several types
-   * of unit tests.
+   * Returns a provider which always provides {@code instance}. This should not be necessary to use
+   * in your application, but is helpful for several types of unit tests.
    *
    * @param instance the instance that should always be provided
    */
-  public static <T> Provider<T> of(@Nullable T instance) {
+  public static <T extends @Nullable Object> Provider<T> of(T instance) {
     return new ConstantProvider<T>(instance);
   }
 
-  private static final class ConstantProvider<T> implements Provider<T> {
-    @Nullable
+  private static final class ConstantProvider<T extends @Nullable Object> implements Provider<T> {
     private final T instance;
 
-    private ConstantProvider(@Nullable T instance) {
+    private ConstantProvider(T instance) {
       this.instance = instance;
     }
 
     @Override
-    @Nullable
     public T get() {
       return instance;
     }
@@ -61,7 +60,7 @@ public final class Providers {
     }
 
     @Override
-    public boolean equals(Object other) {
+    public boolean equals(@Nullable Object other) {
       if (other instanceof ConstantProvider) {
         ConstantProvider<?> that = (ConstantProvider<?>) other;
         return (this.instance == null)

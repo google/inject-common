@@ -30,11 +30,21 @@ import org.jspecify.annotations.Nullable;
 @NullMarked
 public final class Providers {
 
-  private Providers() {}
-
   /**
    * Returns a provider which always provides {@code instance}. This should not be necessary to use
    * in your application, but is helpful for several types of unit tests.
+   *
+   * <p><b>Java 8+ users:</b> prefer {@code () -> instance}. However, note the following
+   * differences:
+   *
+   * <ul>
+   *   <li>Lambdas will delay evaluation of the instance. {@code () -> computeValue()} will be
+   *       computed when {@code provider.get()} is called, but {@code Providers.of(computeValue())}
+   *       will be computed immediately.
+   *   <li>Lambdas do not implement {@code equals()} or {@code hashCode()}, so avoid putting them in
+   *       a collection.
+   *   <li>Lambdas do not implement a useful {@code toString()}.
+   * </ul>
    *
    * @param instance the instance that should always be provided
    */
@@ -75,4 +85,6 @@ public final class Providers {
       return instance == null ? 37 : instance.hashCode();
     }
   }
+
+  private Providers() {}
 }

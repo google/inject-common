@@ -19,4 +19,3 @@ or in gradle:
 ```groovy
   compile 'com.google.inject:inject-common:${current.version}'
 ```
-

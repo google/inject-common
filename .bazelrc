@@ -1,1 +1,9 @@
-build --java_runtime_version=21 --javacopt='--release 8'
+build --java_language_version=8 --tool_java_language_version=25
+build --java_runtime_version=25 --tool_java_runtime_version=25
+
+build --experimental_one_version_enforcement=error
+# TODO(cpovirk): Remove after upgrading to a version of rules_java without an
+# error_prone_annotations dep (after cl/998596263).
+build --noone_version_enforcement_on_java_tests
+
+test --test_env=TZ=UTC
